@@ -8,10 +8,21 @@ function createGrid(){
             const grid = document.createElement("div");
             grid.classList.add("grid");
             row.append(grid);
-            console.log("this is working");
         }
         container.append(row);
     }
 }
 
 createGrid();
+
+
+let grids = document.getElementsByClassName("grid");
+
+function hoverState(){
+    this.style.backgroundColor = "black";
+}
+
+for (let i = 0; i < grids.length; i++){
+    grids[i].addEventListener('mouseover', hoverState);
+}
+
