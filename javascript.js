@@ -3,8 +3,8 @@ const container = document.querySelector("#etching-grid");
 let isMouseDown = false;
 function createGrid(dimension){
     for (let i = 0; i < dimension; i++){
-        const row = document.createElement("div");
-        row.classList.add("row");
+        const column = document.createElement("div");
+        column.classList.add("column");
         for (let j = 0; j < dimension; j++){
             const grid = document.createElement("div");
             grid.classList.add("grid");
@@ -19,9 +19,9 @@ function createGrid(dimension){
                     hoverState(grid);
                 }
             });
-            row.append(grid);
+            column.append(grid);
         }
-        container.append(row);
+        container.append(column);
     }
 }
 

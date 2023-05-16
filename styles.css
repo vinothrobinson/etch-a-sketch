@@ -4,14 +4,18 @@
     border: solid black 1px;
 }
 
-.row {
+.column {
     display: inline-block;
 }
 
 #etching-grid {
+    width: fit-content;
+
+}
+
+.outer-grid-div {
     display: flex;
     justify-content: center;
-    
 }
 
 #new-grid-button {
@@ -23,5 +27,10 @@
 }
 
 .new-grid {
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
     text-align: center;
 }
