@@ -45,5 +45,28 @@ newGrid.addEventListener('click', createNewGrid);
 
 function createNewGrid(){
     let dimension = prompt("Choose how big you want the grid to be, the max size is 100: ");
-    createGrid(dimension);
+    if (dimension !== ""){
+        container.replaceChildren();
+        createGrid(dimension);
+
+        let grids = document.getElementsByClassName("grid");
+        let isMouseDown = false;
+
+        for (let i = 0; i < grids.length; i++){
+            grids[i].addEventListener('mousedown', () => {
+                isMouseDown = true;
+            });
+      
+            grids[i].addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+      
+            grids[i].addEventListener('mousemove', (event) => {
+                if (isMouseDown) {
+                    hoverState(grids[i]);
+                }
+            });
+        }
+    }
+    else return;
 }

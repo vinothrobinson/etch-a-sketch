@@ -11,6 +11,7 @@
 #etching-grid {
     display: flex;
     justify-content: center;
+    
 }
 
 #new-grid-button {
