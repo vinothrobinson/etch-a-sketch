@@ -13,31 +13,8 @@ function createGrid(dimension){
     }
 }
 
-createGrid(16);
-
-
-let grids = document.getElementsByClassName("grid");
-
 function hoverState(object){
     object.style.backgroundColor = "black";
-}
-
-let isMouseDown = false;
-
-for (let i = 0; i < grids.length; i++){
-    grids[i].addEventListener('mousedown', () => {
-        isMouseDown = true;
-      });
-      
-    grids[i].addEventListener('mouseup', () => {
-        isMouseDown = false;
-      });
-      
-    grids[i].addEventListener('mousemove', (event) => {
-        if (isMouseDown) {
-          hoverState(grids[i]);
-        }
-      });
 }
 
 const newGrid = document.querySelector('button');
