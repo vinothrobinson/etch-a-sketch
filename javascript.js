@@ -1,7 +1,12 @@
 const DEFAULT_SIZE = 16; // This is the default size of the grid, 16 x 16
 let current_size = DEFAULT_SIZE // This variable keeps track of the current grid size, it is used in the clearGrid function
 let container = document.querySelector(".etching-grid");
+
+// Booleans for drawing and erasing
 let isMouseDown = false; // This boolean value is used to create the event "click and hold the mouse"
+let isErasing = false;
+let isDrawing = true;
+
 function createGrid(dimension){
     container.style.gridTemplateColumns = `repeat(${dimension}, 1fr)`; // CSS Grid method to create the grid
     container.style.gridTemplateRows = `repeat(${dimension}, 1fr)`;
@@ -16,18 +21,46 @@ function createGrid(dimension){
             grid.addEventListener('mouseup', () => {
                 isMouseDown = false;
             });
-            grid.addEventListener('mousemove', (event) => {
-                if (isMouseDown) {
-                    hoverState(grid);
+            grid.addEventListener('mousemove', () => {
+                if (isMouseDown && isDrawing) {
+                    drawState(grid);
+                }
+                if (isMouseDown && isErasing) {
+                    eraseState(grid)
                 }
             });
         container.insertAdjacentElement('beforeend', grid);
     }
 }
 
-createGrid(DEFAULT_SIZE);
+// This helps determine which mode is being used (erasing)
+const eraser = document.querySelector('#eraser-mode');
+eraser.addEventListener('click', eraserMode);
 
-function hoverState(object){ // Colors the square black when the mouse is over it
+function eraserMode() {
+    eraser.style.fontWeight = "bold";
+    drawing.style.fontWeight = "normal";
+    isErasing = true;
+    isDrawing = false;
+}
+
+function eraseState(object) {
+    object.style.backgroundColor = "white";
+    object.style.borderColor = "rgb(223, 223, 223)"
+}
+
+// This helps determine which mode is being used (drawing)
+const drawing = document.querySelector('#draw-mode');
+drawing.addEventListener('click', drawMode);
+
+function drawMode() {
+    drawing.style.fontWeight = "bold";
+    eraser.style.fontWeight = "normal";
+    isErasing = false;
+    isDrawing = true;
+}
+
+function drawState(object){ // Colors the square black when the mouse is over it
     object.style.backgroundColor = "black";
     object.style.borderColor = "black"
 }
@@ -55,3 +88,9 @@ function clearGrid(){ // Used to clear the grid without making the user click th
     container.replaceChildren();
     createGrid(current_size);
 }
+
+// Code that is executed when the window is loaded / refreshed
+window.addEventListener("load", () => {
+    createGrid(DEFAULT_SIZE)
+    drawing.style.fontWeight = "bold";
+  });
