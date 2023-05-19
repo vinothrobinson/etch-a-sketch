@@ -28,7 +28,7 @@
     text-align: center;
 }
 
-#clear-grid {
+#clear-grid, #eraser-mode, #draw-mode {
     align-items: center;
     width: 150px;
     height: 50px;
