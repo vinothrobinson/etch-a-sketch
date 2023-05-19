@@ -29,6 +29,7 @@ createGrid(DEFAULT_SIZE);
 
 function hoverState(object){ // Colors the square black when the mouse is over it
     object.style.backgroundColor = "black";
+    object.style.borderColor = "black"
 }
 
 const newGrid = document.querySelector('button');
