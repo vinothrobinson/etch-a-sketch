@@ -17,6 +17,12 @@ function createGrid(dimension){
         grid.classList.add("grid");
             grid.addEventListener('mousedown', () => { // Conditions to achieve the listening event desired
                 isMouseDown = true;
+                if (isMouseDown && isDrawing) {
+                    drawState(grid);
+                }
+                if (isMouseDown && isErasing) {
+                    eraseState(grid)
+                }
             });
             grid.addEventListener('mouseup', () => {
                 isMouseDown = false;
