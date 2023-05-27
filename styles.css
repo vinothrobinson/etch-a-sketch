@@ -48,3 +48,12 @@
 body {
     background-color: rgb(236, 236, 236);
 }
+
+.colorpicker {
+    text-align: center;
+}
+
+.colorwheel {
+    height: 50px;
+    width: 100px;
+}
