@@ -1,4 +1,5 @@
 const DEFAULT_SIZE = 16; // This is the default size of the grid, 16 x 16
+const DEFAULT_COLOR = "#000000"
 let current_size = DEFAULT_SIZE // This variable keeps track of the current grid size, it is used in the clearGrid function
 let container = document.querySelector(".etching-grid");
 
@@ -6,6 +7,9 @@ let container = document.querySelector(".etching-grid");
 let isMouseDown = false; // This boolean value is used to create the event "click and hold the mouse"
 let isErasing = false;
 let isDrawing = true;
+
+// Boolean for color
+let currentColor = DEFAULT_COLOR
 
 function createGrid(dimension){
     container.style.gridTemplateColumns = `repeat(${dimension}, 1fr)`; // CSS Grid method to create the grid
@@ -67,8 +71,8 @@ function drawMode() {
 }
 
 function drawState(object){ // Colors the square black when the mouse is over it
-    object.style.backgroundColor = "black";
-    object.style.borderColor = "black"
+    object.style.backgroundColor = currentColor;
+    object.style.borderColor = currentColor
 }
 
 const newGrid = document.querySelector('button');
@@ -100,3 +104,7 @@ window.addEventListener("load", () => {
     createGrid(DEFAULT_SIZE)
     drawing.style.fontWeight = "bold";
   });
+
+function changeColor(color){
+    currentColor = color
+}
